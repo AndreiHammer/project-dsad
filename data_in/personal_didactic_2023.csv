@@ -1,0 +1,43 @@
+Indicativ,Judet,Regiune,Macroregiune,Invatamant anteprescolar,Invatamant gimnazial,Invatamant liceal,Invatamant postliceal si de maistri,Invatamant prescolar,Invatamant primar,Invatamant universitar,Invatamant profesional
+ab,alba,c,1,53,1121,858,11,655,842,177,31
+ar,arad,v,4,32,1388,1110,27,787,1025,524,
+ag,arges,s,3,83,2021,1590,86,1097,1348,33,
+bc,bacau,ne,2,69,2241,1579,67,1083,1405,177,
+bh,bihor,nv,1,126,1636,2696,,1408,1169,1055,
+bn,bistrita-nasaud,nv,1,66,1128,736,4,599,817,,
+bt,botosani,ne,2,8,1546,1159,38,671,1015,,
+br,braila,se,2,19,891,842,13,503,623,7,
+bv,brasov,c,1,76,2035,1366,38,1279,1430,722,56
+bz,buzau,se,2,52,1502,898,50,681,997,,
+cl,calarasi,se,2,8,872,615,,433,617,,
+cs,caras-severin,v,4,30,844,1017,47,483,565,,
+cj,cluj,nv,1,254,1892,2208,53,1800,1721,4099,12
+ct,constanta,se,2,33,2369,2010,108,1321,1563,883,
+cv,covasna,c,1,62,910,626,1,482,640,,
+db,dambovita,s,3,101,1557,1091,15,753,1185,241,
+dj,dolj,sv,4,46,2294,1784,113,1073,1384,1219,
+gl,galati,se,2,3,1716,1423,92,776,1081,898,
+gr,giurgiu,s,3,6,1044,370,24,319,615,,
+gj,gorj,sv,4,50,1154,1071,29,518,695,130,
+hr,harghita,c,1,47,1442,1176,,841,902,,
+hd,hunedoara,v,4,39,1116,1077,41,586,792,138,
+il,ialomita,s,3,28,708,431,5,414,548,,3
+is,iasi,ne,2,104,2669,2308,94,1604,2042,2922,
+if,ilfov,b,3,,1305,495,,1005,941,16,
+mm,maramures,nv,1,57,1612,1252,45,931,1111,163,5
+mh,mehedinti,sv,4,27,866,800,33,384,532,,
+b,municipiul bucuresti,b,3,460,5149,5479,288,4107,4039,8678,
+ms,mures,c,1,109,2432,1426,55,1210,1456,814,
+nt,neamt,ne,2,44,1507,1197,11,707,1064,10,
+ot,olt,sv,4,49,1314,965,77,642,857,,
+ph,prahova,s,3,56,2251,1791,61,1111,1493,207,
+sj,salaj,nv,1,27,903,510,11,510,628,,
+sm,satu mare,nv,1,77,1173,1008,17,776,824,,5
+sb,sibiu,c,1,0,1410,939,72,1026,1165,754,
+sv,suceava,ne,2,16,2483,1820,96,1248,1852,378,
+tr,teleorman,s,3,22,1410,639,41,434,607,,
+tm,timis,v,4,79,2403,2109,38,1453,1573,2659,
+tl,tulcea,se,2,29,714,404,26,311,449,,
+vl,valcea,sv,4,7,1559,953,39,626,779,19,
+vs,vaslui,ne,2,35,1582,912,,681,968,,
+vn,vrancea,se,2,13,1158,949,45,568,744,,
