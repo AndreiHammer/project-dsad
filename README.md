@@ -32,51 +32,9 @@ Using hierarchical clustering methods, the project highlights discrepancies and 
 - **Geospatial Data**:
   - Shapefile for Romanian NUTS2 regions (e.g., `RO_NUTS2/Ro.shp`)
 
-
-README.md
-markdown
-Copiază codul
-# Analysis of the Distribution of Teaching Staff in Romania by Education Levels and Regions
-
-This project, **"Analysis of the Distribution of Teaching Staff in Romania by Education Levels and Regions"**, applies clustering techniques to identify patterns and disparities in the distribution of teaching resources across the country. The study provides valuable insights for policymakers and stakeholders in the education sector to support strategic planning and resource allocation.
-
-## Table of Contents
-
-- [Project Description](#project-description)
-- [Technologies Used](#technologies-used)
-- [Project Structure](#project-structure)
-- [Methodology](#methodology)
-- [Key Results](#key-results)
-- [How to Run the Project](#how-to-run-the-project)
-- [Conclusions](#conclusions)
-
-## Project Description
-
-The project focuses on analyzing and clustering data regarding the distribution of teaching staff across Romania based on:
-- **Education levels**: Primary, secondary, and tertiary.
-- **Geographical regions**: NUTS2 regions in Romania.
-
-Using hierarchical clustering methods, the project highlights discrepancies and potential areas for improvement in the education system.
-
-## Technologies Used
-
-- **Programming Language**: Python
-- **Libraries and Frameworks**:
-  - `pandas`, `numpy` for data manipulation and analysis
-  - `matplotlib`, `seaborn` for data visualization
-  - `scipy` for hierarchical clustering
-  - `scikit-learn` for silhouette analysis and clustering metrics
-  - `geopandas` for spatial data visualization and mapping
-  - `Jsoup` for data scraping (if additional data was required)
-- **Geospatial Data**:
-  - Shapefile for Romanian NUTS2 regions (e.g., `RO_NUTS2/Ro.shp`)
-
 ## Project Structure
 
 ├── data_in/ │ ├── personal_didactic_2023.csv # Input dataset │ └── RO_NUTS2/ # Shapefile for mapping ├── data_out/ │ ├── Ierarhie.csv # Hierarchical clustering results │ └── Partitii.csv # Cluster partitions ├── scripts/ │ ├── main_analysis.py # Main script for running the analysis │ ├── grafice.py # Custom functions for plotting and visualizations │ ├── functii.py # Helper functions for preprocessing and analysis ├── README.md # Project documentation └── requirements.txt # Python dependencies
-
-markdown
-Copiază codul
 
 ## Methodology
 
