@@ -15,17 +15,18 @@ def generare_rampa(denumire, nr_clusteri):
     return culori
 
 
-def plot_ierarhie(h, threshold, titlu, etichete):
+def plot_ierarhie(h, threshold, titlu, etichete, cale_fisier):
     fig = plt.figure("Dendrograma:" + titlu, figsize=(9, 7))
     ax = fig.add_subplot(1, 1, 1)
     ax.set_title(titlu, fontdict={"fontsize": 16, "color": "b"})
-    dendrogram(h, ax=ax, color_threshold=threshold,
-               labels=etichete)
+    dendrogram(h, ax=ax, color_threshold=threshold, labels=etichete)
+    plt.savefig(cale_fisier)
+    plt.close(fig)
 
 
-def histograme(t, variabila, partitie, titlu, culori):
+def histograme(t, variabila, partitie, titlu, culori, cale_fisier):
     fig = plt.figure("Histograma. " + variabila, figsize=(9, 7))
-    fig.suptitle(titlu + ". Histograma pentru nivelul de educatie " + variabila)
+    fig.suptitle(titlu + ". Histograma pentru nivelul de educație " + variabila)
     clase = np.unique(partitie)
     q = len(clase)
     min_max = (t[variabila].min(), t[variabila].max())
@@ -34,20 +35,20 @@ def histograme(t, variabila, partitie, titlu, culori):
         axe = ax[i]
         axe.set_xlabel(str(clase[i]))
         axe.hist(t[partitie == clase[i]][variabila], range=min_max, rwidth=0.9, color=culori[i])
+    plt.savefig(cale_fisier)
+    plt.close(fig)
 
 
-def plot_indecsi_silhouette(x, partitia, titlu, culori):
+def plot_indecsi_silhouette(x, partitia, titlu, culori, cale_fisier):
     fig = plt.figure("Silhouette:" + titlu, figsize=(10, 7))
     ax = fig.add_subplot(1, 1, 1)
     cmap = LinearSegmentedColormap.from_list("cmap", culori, len(culori))
     plot_silhouette(x, partitia, titlu, ax=ax, cmap=cmap)
+    plt.savefig(cale_fisier)
+    plt.close(fig)
 
 
-def show():
-    plt.show()
-
-
-def plot_partitie(z, p, titlu, culori, etichete=None):
+def plot_partitie(z, p, titlu, culori, cale_fisier, etichete=None):
     fig = plt.figure("Scatter." + titlu, figsize=(8, 7))
     ax = fig.add_subplot(1, 1, 1)
     ax.set_title(titlu, fontdict={"fontsize": 16, "color": "b"})
@@ -57,12 +58,16 @@ def plot_partitie(z, p, titlu, culori, etichete=None):
     if etichete is not None:
         for i in range(len(etichete)):
             ax.text(x=z[i, 0], y=z[i, 1], s=etichete[i])
+    plt.savefig(cale_fisier)
+    plt.close(fig)
 
 
-def harta(shp, camp_legatura, t, camp_harta, titlu, culori):
+def harta(shp, camp_legatura, t, camp_harta, titlu, culori, cale_fisier):
     shp1 = pd.merge(shp, t, left_on=camp_legatura, right_index=True)
     f = plt.figure(titlu + "-" + camp_harta, figsize=(9, 7))
     ax = f.add_subplot(1, 1, 1)
     ax.set_title(titlu, fontdict={"fontsize": 16, "color": "b"})
     cmap = LinearSegmentedColormap.from_list("cmap", culori, len(culori))
     shp1.plot(camp_harta, cmap=cmap, ax=ax, legend=True, edgecolor='black')
+    plt.savefig(cale_fisier)
+    plt.close(f)

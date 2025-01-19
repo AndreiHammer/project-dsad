@@ -1,7 +1,12 @@
+import os
 import numpy as np
 import pandas as pd
 from pandas.api.types import is_numeric_dtype
 
+
+def salveaza_in_rezultate(nume_fisier, director):
+    os.makedirs(director, exist_ok=True)
+    return os.path.join(director, nume_fisier)
 
 def nan_replace_t(t: pd.DataFrame):
     for coloana in t.columns:

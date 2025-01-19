@@ -1,10 +1,12 @@
+import os
+
 import numpy as np
 import pandas as pd
 
-from functii import nan_replace_t
+from functii import nan_replace_t, salveaza_in_rezultate
 from scipy.cluster.hierarchy import linkage
 from geopandas import GeoDataFrame
-from grafice import plot_ierarhie, show, plot_indecsi_silhouette, plot_partitie, histograme, generare_rampa, harta
+from grafice import plot_ierarhie, plot_indecsi_silhouette, plot_partitie, histograme, generare_rampa, harta
 from sklearn.metrics import silhouette_samples
 from sklearn.decomposition import PCA
 from functii import elbow
@@ -33,6 +35,8 @@ t_h.to_csv("data_out/Ierarhie.csv")
 
 partitii = elbow(h, 2)
 tabel_partitii = pd.DataFrame(index=set_date.index)
+
+
 for i in range(len(partitii)):
     k = partitii[i][0]
     threshold = partitii[i][1]
@@ -40,26 +44,36 @@ for i in range(len(partitii)):
     model_hclust.fit(x)
     p = np.array(["C"+str(v+1) for v in model_hclust.labels_])
     if i == 0:
-        titlu = "Partitie optimala"
-        tabel_partitii["P_Opt"] = p
-        tabel_partitii["P_Opt_Silh"] = silhouette_samples(x, p)
+        titlu = "Partitia optimala"
+        director = "rezultate/partitia_optimala"
     else:
-        titlu = "Partitia din "+str(k)+" clusteri"
-        tabel_partitii["P_" + str(k)] = p
-        tabel_partitii["P_" + str(k) + "_Silh"] = silhouette_samples(x, p)
-    culori = generare_rampa("rainbow",k)
-    plot_ierarhie(h,threshold,titlu,set_date.index)
-    sil_hi = silhouette_samples(x,p)
-    plot_indecsi_silhouette(x,p,titlu,culori)
-    plot_partitie(z,p,titlu,culori)
+        titlu = f"Partitia din {k} clusteri"
+        director = f"rezultate/partitia_din_{k}_clusteri"
+
+    os.makedirs(director, exist_ok=True)
+
+    tabel_partitii[f"P_{k}"] = p
+    tabel_partitii[f"P_{k}_Silh"] = silhouette_samples(x, p)
+
+    culori = generare_rampa("rainbow", k)
+
+    # Salvare grafice
+
+    #Dendograma
+    plot_ierarhie(h, threshold, titlu, set_date.index, salveaza_in_rezultate("dendrograma.png", director))
+    #Plot scoruri Silhouette
+    plot_indecsi_silhouette(x, p, titlu, culori, salveaza_in_rezultate("silhouette.png", director))
+    #Plot instante pe clusteri
+    plot_partitie(z, p, titlu, culori, salveaza_in_rezultate("scatter.png", director))
+
+    #Histograme pe clusteri
     for variabila in variabile_observate:
-        histograme(set_date,variabila,p,titlu,culori)
-        if fisier_harta is not None:
-            if i == 0:
-                harta(harta_shp, camp_legatura, tabel_partitii,
-                      "P_Opt", "Partitia optimala", culori)
-            else:
-                harta(harta_shp, camp_legatura, tabel_partitii,
-                      "P_" + str(k), "Partitia din " + str(k) + " clusteri", culori)
-    show()
+        histograme(set_date, variabila, p, titlu, culori,
+                   salveaza_in_rezultate(f"histograma_{variabila}.png", director))
+
+    #Harta clusterilor
+    if fisier_harta is not None:
+        harta(harta_shp, camp_legatura, tabel_partitii, f"P_{k}", f"Harta clusterilor - {titlu}", culori,
+              salveaza_in_rezultate("harta_clusteri.png", director))
+
 tabel_partitii.to_csv("data_out/Partitii.csv")
